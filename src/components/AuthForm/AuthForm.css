@@ -1,0 +1,102 @@
+.AuthForm{
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: calc(100vh - 120px);
+}
+.AuthForm__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.AuthForm__login{
+    width: 396px;
+    display: flex;
+    flex-direction: column;
+}
+.AuthForm__title{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 122%;
+    color: white;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, .75);
+    margin-top: 45px;
+    text-align: center;
+}
+.AuthForm__label{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 120%;
+    color: white;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, .1);
+    padding-bottom: 5px;
+    margin-top: 24px;
+}
+.AuthForm__label:first-of-type{
+    margin-top: 0;
+}
+.AuthForm__label_type_error{
+    color: #EE3465;
+    margin-top: 5px;
+    padding: 0;
+    display: flex;
+    text-align: left;
+}
+.AuthForm__input{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    color: #202020;
+    font-size: 16px;
+    line-height: 122%;
+    font-weight: 500;
+}
+.AuthForm__button{
+    width: 396px;
+    height: 45px;
+    margin-top: 220px;
+    color: white;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, .75);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 121%;
+    border-radius: 10px;
+    border: 1px solid #202020;
+    cursor: pointer;
+}
+.AuthForm__button_state_disable{
+    background-color: #8b8b8b;
+}
+.AuthForm__button_state_enable{
+    background: linear-gradient(180deg, #F9AD1B 0%, #FED179 100%);
+}
+.AuthForm__button_state_enable:hover{
+    background: linear-gradient(0deg, #F9AD1B 0%, #FED179 100%);
+}
+.AuthForm__button_window_signup{
+    margin-top: 152px;
+}
+.AuthForm__login-text{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 121%;
+    text-align: center;
+}
+.AuthForm__login-text_type_text{
+    color: white;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, .1);
+    margin-top: 0;
+    margin-right: 6px;
+}
+.AuthForm__login-text_type_link{
+    color: blue;
+    text-decoration: none;
+}
+.AuthForm__texts-block{
+    display: flex;
+    margin-top: 16px;
+}

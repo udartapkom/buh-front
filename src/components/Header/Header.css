@@ -1,0 +1,68 @@
+.Header{
+    width: 1280px;
+    height: 120px;
+    background: linear-gradient(180deg, #1976D3 0%, rgba(25, 118, 211, 0.3) 100%);
+}
+.Header__content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.Header__title-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.Header__logo{
+    width: 72px;
+    height: 72px;
+    margin-top: 24px;
+    margin-right: 20px;
+    margin-bottom: 24px;
+    margin-left: 40px;
+}
+.Header__title{
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 120%;
+    color: white;
+    width: 250px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.Header__hello{
+    width: 250px;
+    font-size: 24px;
+    line-height: 120%;
+    text-align: center;
+    font-weight: 500;
+    color: white;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 0;
+    margin: 0;
+}
+.Header__link{
+    width: 170px;
+    height: 50px;
+    margin-right: 60px;
+    margin-left: 30px;
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 120%;
+    color: white;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    border-radius: 10px;
+    border: 1px solid #202020;
+    background: linear-gradient(180deg, #F9AD1B 0%, #FED179 100%);
+    cursor: pointer;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+.Header__link:hover{
+    background: linear-gradient(0deg, #F9AD1B 0%, #FED179 100%);
+}

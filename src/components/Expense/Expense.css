@@ -1,0 +1,59 @@
+.Expense{
+    margin-top: 40px;
+    margin-left: 100px;
+}
+.Expense__operations{
+    display: flex;
+    flex-direction: row;
+}
+.Expense__list{
+    list-style-type: none;
+    width: 450px;
+    margin: 0;
+    padding: 0;
+}
+.Expense__list-item{
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 120%;
+    color: white;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, .75);
+    margin-top: 15px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid white;
+    display: flex;
+    justify-content: space-between;
+}
+.Expense__list-summ{
+    color: #8FFF00;
+    display: flex;
+    align-items: end;
+    padding-left: 10px;
+}
+.Expense__buttons{
+    margin-top: 20px;
+    margin-left: 130px;
+}
+.Expense__button{
+    width: 250px;
+    height: 50px;
+    background: linear-gradient(180deg, #F9AD1B 0%, #FED179 100%);
+    border: 1px solid #202020;
+    border-radius: 10px;
+    margin-bottom: 17px;
+    color: white;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 120%;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.Expense__button_type_income{
+    margin-top: 30px;
+}
+.Expense__button:hover{
+    background: linear-gradient(0deg, #F9AD1B 0%, #FED179 100%);
+}

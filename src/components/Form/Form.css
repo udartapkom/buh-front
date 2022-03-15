@@ -1,0 +1,86 @@
+.Form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Form__login{
+    width: 396px;
+    display: flex;
+    flex-direction: column;
+}
+.Form__title{
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 120%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    color: white;
+}
+.Form__label{
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 120%;
+    color: #8b8b8b;
+    padding-bottom: 5px;
+    margin-top: 24px;
+}
+.Form__label:first-of-type{
+    margin-top: 0;
+}
+.Form__label_type_error{
+    color: #EE3465;
+    margin-top: 5px;
+    padding: 0;
+    display: flex;
+    text-align: left;
+}
+.Form__input{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #8b8b8b;
+    padding-bottom: 10px;
+    color: white;
+    font-size: 14px;
+    line-height: 122%;
+    font-weight: 500;
+}
+.Form__button{
+    width: 396px;
+    height: 45px;
+    margin-top: 220px;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 121%;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+}
+.Form__button_state_disable{
+    background-color: #8b8b8b;
+}
+.Form__button_state_enable{
+    background-color: #4285f4;
+}
+.Form__button_window_signup{
+    margin-top: 152px;
+}
+.Form__login-text{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 121%;
+    text-align: center;
+}
+.Form__login-text_type_text{
+    color: #8b8b8b;
+    margin-top: 0;
+    margin-right: 6px;
+}
+.Form__login-text_type_link{
+    color: #4285f4;
+    text-decoration: none;
+}
+.Form__texts-block{
+    display: flex;
+    margin-top: 16px;
+}

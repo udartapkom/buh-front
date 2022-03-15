@@ -1,0 +1,9 @@
+.Charts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Charts__row{
+    display: flex;
+    flex-direction: row;
+}

@@ -1,0 +1,26 @@
+.Operative{
+    width: 1280px;
+    height: 50px;
+    background-color: #202020;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.Operative__text{
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 120%;
+    color: white;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 400px;
+    text-align: center;
+    width: 500px;
+}
+.Operative__balance{
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 120%;
+    color: #8FFF00;
+}
