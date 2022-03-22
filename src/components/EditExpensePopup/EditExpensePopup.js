@@ -2,26 +2,29 @@ import React from "react";
 //import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import Popup from "../Popup/Popup";
 
-function CreateCategoryPopup(props) {
-    const [nameCategory, setNameCategory] = React.useState("");
+function EditExpensePopup(props) {
+    const [nameExpense, setNameExpense] = React.useState("");
     const { 
       isOpen,
       onClose, 
       closePopupForm, 
-      onCreateCostsCategory } = props;
+      onSetNewNameExpense,
+      onEditExpense
+      /* expenseName */ } = props;
 
   function categoryChange(event) {
-    setNameCategory(event.target.value);
+    setNameExpense(event.target.value);
   }
   function handleSubmit(event) {
     event.preventDefault();
-    onCreateCostsCategory(nameCategory)
+    onSetNewNameExpense(nameExpense)
+    onEditExpense(nameExpense)
     onClose()
-    setNameCategory("")
+    setNameExpense("")
   }
   return (
     <Popup
-      title="Создать категорию"
+      title={`Редактировать счёт "  "`}
       name="category"
       isOpen={isOpen}
       onClose={onClose}
@@ -34,7 +37,7 @@ function CreateCategoryPopup(props) {
               name="category"
               type="text"
               required
-              value={nameCategory || ""} //  || '' проверяем nameCategory - иначе "warning!" в консоли о том, что Компонент изменяет контролируемый ввод на неконтролируемый...
+              value={nameExpense || ""} //  || '' проверяем nameExpense- иначе "warning!" в консоли о том, что Компонент изменяет контролируемый ввод на неконтролируемый...
               placeholder="Введите название"
               className="modal__input"
               minLength="2"
@@ -49,4 +52,4 @@ function CreateCategoryPopup(props) {
   );
 }
 
-export default CreateCategoryPopup;
+export default EditExpensePopup;

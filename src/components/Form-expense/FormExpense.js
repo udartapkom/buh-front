@@ -4,11 +4,17 @@ function FormExpense(props) {
 
     const {
         title,
-        onSubmit
+        onSubmit,
+        expenseObj,
+        emptyOrder
     } = props
 
+
+    
     const [values, setValues] = React.useState("");
     const [isValidForm, setIsValidForm] = React.useState(false);
+
+//console.log(values) //введённая сумма
 
     const onChangeInput = (event) => {
       //Проверяем форму на валидность
@@ -22,7 +28,7 @@ function FormExpense(props) {
     };
     const onSubmitExpenseForm = (event) => {
       event.preventDefault();
-      onSubmit();
+      //onSubmit();
     };
     return (
       <>
@@ -33,19 +39,17 @@ function FormExpense(props) {
               <div className="Expense__select">
                 <span className="Expense__subtitle">Со счета</span>
                 <select className="Expense__select-element">
-                  <option>наличные</option>
-                  <option>Карта №1</option>
-                  <option>Карта №2</option>
-                  <option>Вклад</option>
+                  {!emptyOrder ? expenseObj.map((item) => (
+                    <option>{item.title}</option>
+                  )) : null}
                 </select>
               </div>
               <div className="Expense__select">
                 <span className="Expense__subtitle">На счет</span>
                 <select className="Expense__select-element">
-                  <option>наличные</option>
-                  <option>Карта №1</option>
-                  <option>Карта №2</option>
-                  <option>Вклад</option>
+                {!emptyOrder ?  expenseObj.map((item) => (
+                    <option>{item.title}</option>
+                  )) : null}
                 </select>
               </div>
             </div>

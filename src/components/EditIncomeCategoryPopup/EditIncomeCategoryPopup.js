@@ -2,26 +2,27 @@ import React from "react";
 //import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import Popup from "../Popup/Popup";
 
-function CreateCategoryPopup(props) {
+function EditIncomeCategoryPopup(props) {
     const [nameCategory, setNameCategory] = React.useState("");
     const { 
       isOpen,
       onClose, 
       closePopupForm, 
-      onCreateCostsCategory } = props;
+      onEditIncomeCategory,
+      categoryName } = props;
 
   function categoryChange(event) {
     setNameCategory(event.target.value);
   }
   function handleSubmit(event) {
     event.preventDefault();
-    onCreateCostsCategory(nameCategory)
+    onEditIncomeCategory(nameCategory)
     onClose()
     setNameCategory("")
   }
   return (
     <Popup
-      title="Создать категорию"
+      title={`Редактировать категорию "${categoryName}"`}
       name="category"
       isOpen={isOpen}
       onClose={onClose}
@@ -49,4 +50,4 @@ function CreateCategoryPopup(props) {
   );
 }
 
-export default CreateCategoryPopup;
+export default EditIncomeCategoryPopup;

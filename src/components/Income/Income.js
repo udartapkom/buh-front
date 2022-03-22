@@ -2,7 +2,7 @@ import React from "react";
 import Form from "../Form/Form";
 
 function Income(props) {
-  const {onCreateIncome} = props
+  const {onCreateIncome, expenseObj, categoryPlusObj} = props
 
     const [isValidForm, setIsValidForm] = React.useState(false)
     const [expenceValue, setExpenseValue] = React.useState('')
@@ -17,6 +17,9 @@ function Income(props) {
       date: '',
       description: ''
     })
+
+    const emptyPlusOrder = JSON.stringify(categoryPlusObj) === '{}'; //если объект пустой - ждём, иначе ошибка!
+    const emptyOrder = JSON.stringify(expenseObj) === '{}';
 
     const onChangeInput = (event) => {
       //Проверяем форму на валидность
@@ -74,17 +77,19 @@ React.useEffect(() => {
                     <div className="Expense__select">
                       <span className="Expense__subtitle">На счет</span>
                       <select className="Expense__select-element Expense__select-element_type_income" onChange={expence}>
-                        <option>наличные</option>
-                        <option>Карта №1</option>
-                        <option>Карта №2</option>
-                        <option>Вклад</option>
+                      <option disabled>Выберите счёт</option>
+                        {!emptyOrder ? expenseObj.map((item) => (
+                          <option value={item.title} key={item._id}>{item.title}</option>
+                        )) : null}
                       </select>
                     </div>
                     <div className="Expense__select">
                       <span className="Expense__subtitle">Категория</span>
                       <select className="Expense__select-element Expense__select-element_type_income" onChange={category}>
-                        <option>Без категории</option>
-                        <option>ЗП</option>
+                      <option disabled>Выберите категорию</option>
+                        { !emptyPlusOrder ? categoryPlusObj.map((item) => (
+                          <option value={item.title} key={item._id}>{item.title}</option>
+                        )) : null}
                       </select>
                     </div>
                   </div>

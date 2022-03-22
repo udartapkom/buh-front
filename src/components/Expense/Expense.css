@@ -8,7 +8,7 @@
 }
 .Expense__list{
     list-style-type: none;
-    width: 450px;
+    width: 600px;
     margin: 0;
     padding: 0;
 }
@@ -24,6 +24,12 @@
     display: flex;
     justify-content: space-between;
 }
+.Expense__list-title{
+    display: flex;
+    width: 470px;
+    justify-content: space-between;
+    margin-right: 30px;
+}
 .Expense__list-summ{
     color: #8FFF00;
     display: flex;
@@ -32,7 +38,17 @@
 }
 .Expense__buttons{
     margin-top: 20px;
-    margin-left: 130px;
+    margin-left: 50px;
+    width: 350px;
+}
+.Expense__tutorial{
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 120%;
+    color: white;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+    margin-top: 5px;
+    margin-bottom: 45px;
 }
 .Expense__button{
     width: 250px;
@@ -40,7 +56,7 @@
     background: linear-gradient(180deg, #F9AD1B 0%, #FED179 100%);
     border: 1px solid #202020;
     border-radius: 10px;
-    margin-bottom: 17px;
+    margin-bottom: 45px;
     color: white;
     font-size: 24px;
     font-weight: 500;

@@ -2,20 +2,20 @@ import React from "react";
 //import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import Popup from "../Popup/Popup";
 
-function CreateCategoryPopup(props) {
+function CreateIncomeCategoryPopup(props) {
     const [nameCategory, setNameCategory] = React.useState("");
     const { 
       isOpen,
       onClose, 
       closePopupForm, 
-      onCreateCostsCategory } = props;
+      onCreateIncomeCategory } = props;
 
   function categoryChange(event) {
     setNameCategory(event.target.value);
   }
   function handleSubmit(event) {
     event.preventDefault();
-    onCreateCostsCategory(nameCategory)
+    onCreateIncomeCategory(nameCategory)
     onClose()
     setNameCategory("")
   }
@@ -49,4 +49,4 @@ function CreateCategoryPopup(props) {
   );
 }
 
-export default CreateCategoryPopup;
+export default CreateIncomeCategoryPopup;

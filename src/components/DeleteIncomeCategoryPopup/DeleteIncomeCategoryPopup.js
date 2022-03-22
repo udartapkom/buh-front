@@ -2,20 +2,20 @@ import React from "react";
 //import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import Popup from "../Popup/Popup";
 
-function DeleteCategoryPopup(props) {
-    const [nameCategory, setNameCategory] = React.useState("");
+function DeleteIncomeCategoryPopup(props) {
+//    const [nameCategory, setNameCategory] = React.useState("");
     const { 
       isOpen,
       onClose, 
       closePopupForm, 
-      onDeleteCostsCategory,
+      onDeleteIncomeCategory,
       categoryName } = props;
 
   function handleSubmit(event) {
     event.preventDefault();
-    onDeleteCostsCategory(categoryName)
+    onDeleteIncomeCategory(categoryName)
     onClose()
-    setNameCategory("")
+//    setNameCategory("")
   } 
   return (
     <Popup
@@ -30,4 +30,4 @@ function DeleteCategoryPopup(props) {
   );
 }
 
-export default DeleteCategoryPopup;
+export default DeleteIncomeCategoryPopup;

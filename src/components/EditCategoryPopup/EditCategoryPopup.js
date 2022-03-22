@@ -8,7 +8,7 @@ function EditCategoryPopup(props) {
       isOpen,
       onClose, 
       closePopupForm, 
-      onEditCategory,
+      onEditCostsCategory,
       categoryName } = props;
 
   function categoryChange(event) {
@@ -16,7 +16,7 @@ function EditCategoryPopup(props) {
   }
   function handleSubmit(event) {
     event.preventDefault();
-    onEditCategory(nameCategory)
+    onEditCostsCategory(nameCategory)
     onClose()
     setNameCategory("")
   }
