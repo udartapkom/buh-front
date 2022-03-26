@@ -77,7 +77,7 @@ React.useEffect(() => {
                     <div className="Expense__select">
                       <span className="Expense__subtitle">На счет</span>
                       <select className="Expense__select-element Expense__select-element_type_income" onChange={expence}>
-                      <option disabled>Выберите счёт</option>
+                      <option selected disabled>Выберите счёт</option>
                         {!emptyOrder ? expenseObj.map((item) => (
                           <option value={item.title} key={item._id}>{item.title}</option>
                         )) : null}
@@ -86,7 +86,7 @@ React.useEffect(() => {
                     <div className="Expense__select">
                       <span className="Expense__subtitle">Категория</span>
                       <select className="Expense__select-element Expense__select-element_type_income" onChange={category}>
-                      <option disabled>Выберите категорию</option>
+                      <option selected disabled>Выберите категорию</option>
                         { !emptyPlusOrder ? categoryPlusObj.map((item) => (
                           <option value={item.title} key={item._id}>{item.title}</option>
                         )) : null}

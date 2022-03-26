@@ -271,10 +271,63 @@ export class MainApi {
               })
             }))
         }
+
+        getDataRange(data){
+          const token = localStorage.getItem('token');
+           return this._getResponseData(fetch(`${this._baseUrl}/minus/getanyinfo`, {  
+            method: 'POST',
+            headers: {
+                ...this._headers,
+                "Authorization" : `Bearer ${token}`
+              },
+            body: JSON.stringify({
+              "dateStart": data.expenseF,
+              "dateOwer": data.expenseS
+            })
+          })) 
+        } 
+
+        getDataRangeExpense(data){
+          const token = localStorage.getItem('token');
+           return this._getResponseData(fetch(`${this._baseUrl}/plus/getanyinfo`, {  
+            method: 'POST',
+            headers: {
+                ...this._headers,
+                "Authorization" : `Bearer ${token}`
+              },
+            body: JSON.stringify({
+              "dateStart": data.expenseF,
+              "dateOwer": data.expenseS
+            })
+          })) 
+        } 
+
+        getAllDataPlus(){ // вся информация о доходах
+          const token = localStorage.getItem('token');
+          return this._getResponseData(fetch(`${this._baseUrl}/plus/getallinfo`, {  
+              method: 'GET',
+              headers: {
+                  ...this._headers,
+                  "Authorization" : `Bearer ${token}`
+                }
+            }))
+        }
+
+        getAllDataMinus(){ // вся информация о расходах
+          const token = localStorage.getItem('token');
+          return this._getResponseData(fetch(`${this._baseUrl}/minus/getallinfo`, {  
+              method: 'GET',
+              headers: {
+                  ...this._headers,
+                  "Authorization" : `Bearer ${token}`
+                }
+            }))
+        }
+
   }
   
   const mainApi = new MainApi({
-    baseUrl: 'http://api.myportfolios.ru',
+    baseUrl: 'http://api.coshelek2000.ru',
     headers: {
       'Content-Type': 'application/json'
     }

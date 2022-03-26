@@ -19,10 +19,10 @@ function Operative(props) {
         <>
         <section className="Operative">
             <p className="Operative__text">Текущий баланс: <span className="Operative__balance">{itemShowSumm}</span></p>
-            <p className="Operative__text">Курсы валют: 
+            {/* <p className="Operative__text">Курсы валют: 
             <span className="Operative__balance"> $ = 100,</span>
             <span className="Operative__balance"> &#8364; = 100</span>
-            </p>
+            </p> */}
             </section>
         </>
     )

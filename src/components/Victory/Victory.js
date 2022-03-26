@@ -4,27 +4,64 @@ import { Pie } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const data = {
-  labels: ['Расходы', 'Доходы'],
-  datasets: [
-    {
-      label: '# of Votes',
-      data: [12, 19],
-      backgroundColor: [
-        'tomato',
-        'forestgreen',
-      ],
-      borderColor: [
-        'white',
-        'white',
-      ],
-      borderWidth: 2,
-    },
-  ],
-};
 
-const Victory = () => {
- 
+
+const Victory = (props) => {
+  
+  const [itemShowSummP, setItemShowSummP] = React.useState('')
+  const [itemShowSummM, setItemShowSummM] = React.useState('')
+  let summP = 0;
+  let summM = 0;
+
+  const { 
+    allDataMinus, 
+    allDataPlus, 
+    getAlldataMinus, 
+    getAlldataPlus 
+  } = props
+
+  React.useEffect(() => {
+  getAlldataPlus()
+  getAlldataMinus()
+}, [])
+
+React.useEffect(() => {
+  if(allDataPlus.length !== 0){
+    allDataPlus.map((item) => (
+      summP = summP + item.summ
+    ))
+    setItemShowSummP(summP)
+   }
+}, [allDataPlus])
+
+    React.useEffect(() => {
+      if(allDataMinus.lenhth !== 0){
+        allDataMinus.map((item) => (
+          summM = summM + item.summ
+        ))
+        setItemShowSummM(summM)
+      }
+    }, [allDataMinus])
+
+  const data = {
+    labels: ['Расходы', 'Доходы'],
+    datasets: [
+      {
+        label: '# of Votes',
+        data: [itemShowSummM, itemShowSummP],
+        backgroundColor: [
+          'tomato',
+          'forestgreen',
+        ],
+        borderColor: [
+          'white',
+          'white',
+        ],
+        borderWidth: 2,
+      },
+    ],
+  };
+
   return (
     <>
     <section className="Donut Donut__border_right">

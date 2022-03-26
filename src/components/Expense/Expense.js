@@ -51,12 +51,12 @@ function Expense(props) {
                 <div className="Expense__button">Удалить счет</div> */}
             </div>
             </div>
-        <FormExpense
+        {/* <FormExpense
             title='Переводы между счетами'
             emptyOrder={emptyOrder}
             {...props}
         >
-        </FormExpense>
+        </FormExpense> */}
         </section>
         </>
     )

@@ -1,25 +1,20 @@
 import React from "react";
 import Form from "../Form/Form";
+import ExportToExcel from "../ExportToExcel/ExportToExcel";
 
-function Analitic() {
-  /*     const d = new Date();
-    const currentDay = new Date();
+function Analitic(props) {
 
-d.setDate(d.getDate() - 7);
-const currDate = currentDay.toLocaleString()
-const weekDade = d.toLocaleString() 
-всю лобуду выше можно использовать для устаноки конкретных дат
-*/
+  const {
+    getDataRange, 
+    dataRange,
+    getDataRangeExp, 
+    dataRangeExp} = props
 
   const [dateExpenseValueFirst, setDateExpenseValueFirst] = React.useState("");
   const [dateExpenseValueSecond, setDateExpenseValueSecond] = React.useState("");
-  const [dateCostsValueFirst, setDateCostsValueFirst] = React.useState("");
-  const [dateCostsValueSecond, setDateCostsValueSecond] = React.useState("");
   const [formData, setFormData] = React.useState({
     dateExpenseValueFirst: '',
     dateExpenseValueSecond: '',
-    dateCostsValueFirst: '',
-    dateCostsValueSecond:''
   })
 
 React.useEffect(() => {
@@ -27,15 +22,14 @@ React.useEffect(() => {
         {
            expenseF: dateExpenseValueFirst,
            expenseS: dateExpenseValueSecond,
-           costsF: dateCostsValueFirst,
-           costsS: dateCostsValueSecond
         }
     )
-}, [dateExpenseValueFirst, dateExpenseValueSecond, dateCostsValueFirst, dateCostsValueSecond])
+}, [dateExpenseValueFirst, dateExpenseValueSecond])
 
 const onSubmitForm = (event) => {
     event.preventDefault()
-    console.log(formData)
+    getDataRange(formData)
+    getDataRangeExp(formData)
  }
   const dateValEpenseFirst = (event) => {
     setDateExpenseValueFirst(event.target.value);
@@ -43,18 +37,46 @@ const onSubmitForm = (event) => {
   const dateValEpenseSecond = (event) => {
     setDateExpenseValueSecond(event.target.value);
   };
-  const dateValCostsFirst = (event) => {
-    setDateCostsValueFirst(event.target.value);
-  };
-  const dateValCostsSecond = (event) => {
-    setDateCostsValueSecond(event.target.value);
-  };
+
+  const options ={
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }
+const dataFormat = (data) => { //приводим дату к нужному формату
+ const formatDate = new Date(data)
+  return(formatDate.toLocaleString("ru", options))
+}
+
   return (
- 
-    <>
+     <>
        <section className="Section__analitic">
+         <h2 className="Analitic__title">Аналитика</h2>
+         <div>
+         <h3 className="Analitic__subtitle">Расходы</h3>
+          { dataRange.map((item) => (
+            <ul className="Analitic__list">
+            <li className="Analitic__list-item">{item.account}</li>
+            <li className="Analitic__list-item">{item.catMinus}</li>
+            <li className="Analitic__list-item Analitic__list-item_color_red">{item.summ}</li>
+            <li className="Analitic__list-item">{dataFormat(item.date)}</li>
+            <li className="Analitic__list-item">{item.description}</li>
+            </ul>
+          )) 
+          }
+          <h3 className="Analitic__subtitle">Доходы</h3>
+          { dataRangeExp.map((item) => (
+            <ul className="Analitic__list">
+            <li className="Analitic__list-item">{item.account}</li>
+            <li className="Analitic__list-item">{item.catPlus}</li>
+            <li className="Analitic__list-item Analitic__list-item_color_green">{item.summ}</li>
+            <li className="Analitic__list-item">{dataFormat(item.date)}</li>
+            <li className="Analitic__list-item">{item.description}</li>
+            </ul>
+          )) 
+          }
+         </div>
         <Form
-    title="Аналитика"
     isValidForm={true}
     onSubmitForm={onSubmitForm}
     onSubmitText="Показать на экране"
@@ -63,7 +85,7 @@ const onSubmitForm = (event) => {
     children={
         <section className="Analitic">
         <div className="Analitic__block">
-          <h2 className="Analitic__title">Расходы за период</h2>
+          <h2 className="Analitic__title">Расходы и доходы за период:</h2>
           <div className="Analitic__inputs">
             <span className="Expense__subtitle">C даты</span>
             <input
@@ -81,31 +103,14 @@ const onSubmitForm = (event) => {
             ></input>
           </div>
         </div>
-        <div className="Analitic__block">
-          <h2 className="Analitic__title">Доходы за период</h2>
-          <div className="Analitic__inputs">
-            <span className="Expense__subtitle">C даты</span>
-            <input
-              className="Expense__input Expense__input_type_date Analitics__input_position_first"
-              type="date"
-              onChange={dateValCostsFirst}
-            ></input>
-          </div>
-          <div className="Analitic__inputs">
-            <span className="Expense__subtitle">По дату</span>
-            <input
-              className="Expense__input Expense__input_type_date"
-              type="date"
-              onChange={dateValCostsSecond}
-            ></input>
-          </div>
-        </div>
-        </section>
+      </section>
 }
 ></Form>
-<div className="Expense__button">Выгрузить</div>
 
-{/* сюда выводим таблицу */}
+    <ExportToExcel 
+      dataRange={dataRange}
+      dataRangeExp={dataRangeExp}
+    />
 
 </section>
     </>

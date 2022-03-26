@@ -1,6 +1,7 @@
 .Income{
-    margin-top: 115px;
-    margin-left: 90px;
+    margin-top: 50px;
+    margin-left: 60px;
+    margin-right: 25px;
 }
 .Income__form{
     display: flex;
@@ -9,7 +10,7 @@
 .Income__wrapper{
     display: flex;
     flex-direction: row;
-    width: 940px;
+   
     justify-content: space-between;
 }
 .Icome__description{

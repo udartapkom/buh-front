@@ -65,6 +65,12 @@ function App() {
   const [deleteCategoryCostsName, setDeleteCategoryCostsName] = React.useState("");
   const [deleteCategoryIncomeName, setDeleteCategoryIncomeName] = React.useState("");
 
+  const [dataRange, setDataRange] = React.useState([]);
+  const [dataRangeExp, setDataRangeExp] = React.useState([]);
+
+  const [allDataPlus, setAllDataPlus] = React.useState([]);
+  const [allDataMinus, setAllDataMinus] = React.useState([]);
+
   //хуки работы с пользователем
   const [currentUser, setCurrentUser] = React.useState({});
   const [loggedIn, setLoggedIn] = React.useState(false);
@@ -160,7 +166,7 @@ function App() {
           onCreateCostsCategory("Без категории");
         }
         setResultMessage(falseImage);
-        setTextPopup("При получении списка категорий произошла ошибка 1" + error);
+        setTextPopup("При получении списка категорий произошла ошибка " + error);
         setIsInfoTooltipOpen(true);
       });
   }
@@ -262,7 +268,7 @@ function App() {
           onCreateIncomeCategory("Без категории");
         }
         setResultMessage(falseImage);
-        setTextPopup("При получении списка категорий произошла ошибка 3" + error);
+        setTextPopup("При получении списка категорий произошла ошибка" + error);
         setIsInfoTooltipOpen(true);
       });
   }
@@ -487,6 +493,63 @@ ${data.date} с примечанием: ${data.description}`);
       });
   }
 
+  function getDataRange(data){
+    //получаем записи расходов из диапазона дат
+    mainApi
+    .getDataRange(data)
+    .then((res) => {
+      setDataRange(res)
+    })
+    .catch((error) => {
+      setResultMessage(falseImage);
+        setTextPopup("При получении данных произошла ошибка" + error);
+        setIsInfoTooltipOpen(true);
+    })
+  }
+
+  function getDataRangeExp(data){
+     //получаем записи доходов из диапазона дат
+    mainApi
+    .getDataRangeExpense(data)
+    .then((res) => {
+      setDataRangeExp(res)
+    })
+    .catch((error) => {
+      setResultMessage(falseImage);
+        setTextPopup("При получении данных произошла ошибка" + error);
+        setIsInfoTooltipOpen(true);
+    })
+  }
+
+  function getAlldataPlus(){
+    mainApi
+    .getAllDataPlus()
+    .then((data) => {
+      setAllDataPlus(data)
+    })
+    .catch((error) => {
+      setResultMessage(falseImage);
+      setTextPopup("У Вас ещё нет данных для отображение графиков. Установлены данные по-умолчанию.");
+      setIsInfoTooltipOpen(true);
+      setAllDataPlus(50)
+    })
+  }
+
+  function getAlldataMinus(){
+    mainApi
+    .getAllDataMinus()
+    .then((data) => {
+      setAllDataMinus(data)
+    })
+    .catch((error) => {
+      setResultMessage(falseImage);
+      setTextPopup("У Вас ещё нет данных для отображение графиков. Установлены данные по-умолчанию.");
+      setIsInfoTooltipOpen(true);
+      setAllDataMinus(50)
+    })
+  }
+  
+
   function onSubmitRegister({ name, email, password }) {
     // Регистрируемся
     if (!name || !email || !password) {
@@ -549,6 +612,8 @@ ${data.date} с примечанием: ${data.description}`);
     setExpenseObj({});
     setCategoryMinusObj({});
     setCategoryPlusObj({});
+    setAllDataMinus([]);
+    setAllDataPlus([])
     history.push("/signin");
   }
 
@@ -606,8 +671,25 @@ ${data.date} с примечанием: ${data.description}`);
               categoryMinusObj={categoryMinusObj}
               loggedIn={loggedIn}
             />
-            <ProtectedRoute exact path="/analitic" component={Analitic} loggedIn={loggedIn} />
-            <ProtectedRoute exact path="/charts" component={Charts} loggedIn={loggedIn} />
+            <ProtectedRoute 
+            exact 
+            path="/analitic" 
+            component={Analitic}
+            getDataRange={getDataRange}
+            getDataRangeExp={getDataRangeExp}
+            dataRange={dataRange}
+            dataRangeExp={dataRangeExp}
+            loggedIn={loggedIn} />
+            <ProtectedRoute 
+            exact 
+            path="/charts" 
+            component={Charts} 
+            getAlldataPlus={getAlldataPlus}
+            getAlldataMinus={getAlldataMinus}
+            allDataPlus={allDataPlus}
+            allDataMinus={allDataMinus}
+            loggedIn={loggedIn} 
+            />
             <Route exact path="/signin">
               <Login onSubmitLogin={onSubmitLogin} />
             </Route>

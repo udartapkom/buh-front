@@ -1,6 +1,6 @@
 .Header{
-    width: 1280px;
-    height: 120px;
+   
+    height: 80px;
     background: linear-gradient(180deg, #1976D3 0%, rgba(25, 118, 211, 0.3) 100%);
 }
 .Header__content{
@@ -14,19 +14,19 @@
     align-items: center;
 }
 .Header__logo{
-    width: 72px;
-    height: 72px;
-    margin-top: 24px;
+    width: 56px;
+    height: 56px;
+    margin-top: 14px;
     margin-right: 20px;
-    margin-bottom: 24px;
+    margin-bottom: 14px;
     margin-left: 40px;
 }
 .Header__title{
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 500;
     line-height: 120%;
     color: white;
-    width: 250px;
+    width: 240px;
     padding: 0;
     margin: 0;
     text-align: center;
